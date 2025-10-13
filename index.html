@@ -12,16 +12,14 @@
     function sendMsg(obj) {
         window.parent.postMessage(JSON.stringify(obj), "*");
     }
- 
+
     document.getElementById("Button1").addEventListener("click", function() {
-        const message = {
-            type: "reload",
-            id: 1337
-        };
+        const message = { id: 1337 };
         console.log("Sending message:", message);
         sendMsg(message);
     });
 </script>
 
 </html>
+
 
