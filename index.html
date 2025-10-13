@@ -3,7 +3,7 @@
 <body>
 
 <div>
-    <button id="myButton">Click Me!</button>
+    <button id="Button1">PushMe!</button>
 </div>
 
 </body>
@@ -15,30 +15,14 @@
         window.parent.postMessage(JSON.stringify(obj), "*");
     }
  
-    function receiveMsg(event) {
-        try {
-            const data = JSON.parse(event.data);
- 
-            if(data.type === "handshake"){
-                myId = data.id;
-                console.log("Received handshake, id:", myId);
-            }
-        } catch (e) {
-            console.error("Error parsing message:", e);
-        }
-    }
- 
-    window.addEventListener("message", receiveMsg, false);
- 
-    document.getElementById("myButton").addEventListener("click", function() {
+    document.getElementById("Button1").addEventListener("click", function() {
         const message = {
             type: "reload",
-            id: myId
+            id: 1337
         };
         console.log("Sending message:", message);
         sendMsg(message);
     });
 </script>
-
 
 </html>
