@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <head>
-    <title>Listener</title>
+    <title>iframe</title>
 </head>
 <body>
-    <iframe src="iframe.html" id="iFrame" title="iFrame"></iframe>
-    <div class="log-area" id="logArea"></div>
-    <script>
-        const logElement = document.getElementById('logArea');
+    <input type="text" id="messageInput">
+    <button onclick="sendMessage()">Nachricht senden</button>
 
-        window.addEventListener('message', function(event) {
-            console.log('Text', event.data, event.origin);
-            logElement.innerHTML = `${event.data}\n`;
-        });
+    <script>
+        const inputElement = document.getElementById('messageInput');
+        function sendMessage() {
+            const message = inputElement.value;
+            window.parent.postMessage(message, '*');
+        }
     </script>
 </body>
 </html>
