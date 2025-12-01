@@ -7,13 +7,45 @@
     <button onclick="sendMessage()">Nachricht senden</button>
 
     <script>
+  let myId = null;
+        
         const inputElement = document.getElementById('messageInput');
         function sendMessage() {
             const message = inputElement.value;
            // window.parent.postMessage(JSON.stringify(message), '*');
            window.parent.postMessage( JSON.stringify({ type: 'handshake', id: message }), '*' );
         }
+
+
+function receiveMsg(event) {
+        try {
+            const data = JSON.parse(event.data);
+ 
+            if(data.type === "handshake"){
+                myId = data.id;
+                console.log("Received handshake, id:", myId);
+            }
+        } catch (e) {
+            console.error("Error parsing message:", e);
+        }
+    }
+ 
+    window.addEventListener("message", receiveMsg, false);
+ 
+    document.getElementById("myButton").addEventListener("click", function() {
+        const message = {
+            type: "reload",
+            id: myId
+        };
+        console.log("Sending message:", message);
+        sendMsg(message);
+    });
+
+
+
+        
     </script>
 </body>
 </html>
+
 
