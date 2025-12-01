@@ -13,7 +13,7 @@
         function sendMessage() {
             const message = inputElement.value;
 
-           window.parent.postMessage( JSON.stringify({ type: 'myType', id: myId, data: message }), '*' );
+           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: myId, data: message }), '*' );
         }
 
 
@@ -47,6 +47,7 @@ function receiveMsg(event) {
     </script>
 </body>
 </html>
+
 
 
 
