@@ -10,7 +10,7 @@
         const inputElement = document.getElementById('messageInput');
         function sendMessage() {
             const message = inputElement.value;
-            window.parent.postMessage(message, '*');
+            window.parent.postMessage(JSON.stringify(message), '*');
         }
     </script>
 </body>
