@@ -13,7 +13,7 @@
         function sendMessage() {
             const message = inputElement.value;
 
-           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: myId }), '*' );
+           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: myId, data: message }), '*' );
         }
 
 function receiveMsg(event) {
@@ -22,6 +22,7 @@ function receiveMsg(event) {
  
             if(data.type === "handshake"){
                 myId = data.id;
+                inputElement.value = myId;
                 console.log("Received handshake, id:", myId);
             }
         } catch (e) {
@@ -34,6 +35,7 @@ function receiveMsg(event) {
     </script>
 </body>
 </html>
+
 
 
 
