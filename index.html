@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html>
+<head>
+    <title>Listener</title>
+</head>
 <body>
+    <iframe src="iframe.html" id="iFrame" title="iFrame"></iframe>
+    <div class="log-area" id="logArea"></div>
+    <script>
+        const logElement = document.getElementById('logArea');
 
-<div>
-    <button id="Button1">PushMe!</button>
-</div>
-
+        window.addEventListener('message', function(event) {
+            console.log('Text', event.data, event.origin);
+            logElement.innerHTML = `${event.data}\n`;
+        });
+    </script>
 </body>
-
-<script>
-    function sendMsg(obj) {
-        window.parent.postMessage(JSON.stringify(obj), "*");
-    }
-
-    document.getElementById("Button1").addEventListener("click", function() {
-        const message = { id: 1337 };
-        console.log("Sending message:", message);
-        sendMsg(message);
-    });
-</script>
-
 </html>
-
-
