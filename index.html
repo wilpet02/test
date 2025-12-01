@@ -10,8 +10,10 @@
         const inputElement = document.getElementById('messageInput');
         function sendMessage() {
             const message = inputElement.value;
-            window.parent.postMessage(JSON.stringify(message), '*');
+           // window.parent.postMessage(JSON.stringify(message), '*');
+           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: message }), '*' );
         }
     </script>
 </body>
 </html>
+
