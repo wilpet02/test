@@ -30,18 +30,11 @@ function receiveMsg(event) {
     }
  
     window.addEventListener("message", receiveMsg, false);
-        
-    document.getElementById("myButton").addEventListener("click", function() {
-        const message = {
-            type: "reload",
-            id: myId
-        };
-        console.log("Sending message:", message);
-        sendMsg(message);
-    });       
+              
     </script>
 </body>
 </html>
+
 
 
 
