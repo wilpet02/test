@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <title>iframe</title>
+</head>
+<body>
+    <input type="text" id="messageInput">
+    <button onclick="sendMessage()">Nachricht senden</button>
+
+    <script>
+        const inputElement = document.getElementById('messageInput');
+        function sendMessage() {
+            const message = inputElement.value;
+            window.parent.postMessage(message, '*');
+        }
+    </script>
+</body>
+</html>
