@@ -13,9 +13,8 @@
         function sendMessage() {
             const message = inputElement.value;
 
-           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: myId, data: message }), '*' );
+           window.parent.postMessage( JSON.stringify({ type: 'handshake', id: myId }), '*' );
         }
-
 
 function receiveMsg(event) {
         try {
@@ -31,7 +30,7 @@ function receiveMsg(event) {
     }
  
     window.addEventListener("message", receiveMsg, false);
- 
+        
     document.getElementById("myButton").addEventListener("click", function() {
         const message = {
             type: "reload",
@@ -39,14 +38,11 @@ function receiveMsg(event) {
         };
         console.log("Sending message:", message);
         sendMsg(message);
-    });
-
-
-
-        
+    });       
     </script>
 </body>
 </html>
+
 
 
 
